@@ -1,0 +1,238 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+:root{
+  --index: calc(1vw + 1vh);
+  --gutter: 30px;
+  --side-small: 26;
+  --side-big: 36;
+  --depth: 4000px;
+  --transition: .75s cubic-bezier(.075,.5,0,1)
+}
+body{
+  background-color: #000;
+  color: #fff;
+  font-size: calc(var(--index) * .8 );
+  line-height: 1.75;
+  height: var(--depth);
+  font-weight: 300;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(87, 4, 87);
+  border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 15px;
+}
+.container{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  perspective: 1500px;
+}
+.gallery{
+  transform-style: preserve-3d;
+  height: 100%;
+}
+.frame{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition) opacity  .75s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+h1, h2, h3, h4{
+  font-weight: 100;
+  text-transform: uppercase;
+  width: min-content;
+  line-height: 1;
+}
+.frame h2{
+  text-align: center;
+  font-size: calc(var(--index) * 3.3);
+  width: min-content;
+  line-height: 1;
+}
+.frame-media{
+  position: relative;
+  width: calc(var(--index)* var(--side-small)) ;
+  height: calc(var(--index)* var(--side-big)) ;
+  background-position: center;
+  background-size: cover;
+}
+.frame-media{
+  background-repeat: no-repeat;
+  background-size:contain;
+}
+video.frame-media_b{
+  width: calc(var(--index) * var(--side-small) ) ;
+  height: calc(var(--index)* var(--side-big)) ;
+}
+.frame-media_left{
+  right: calc(var(--side-small) / 2 * var(--index) + var(--gutter) * 2);
+  
+}
+.frame-media_right{
+  left: calc(var(--side-small) / 2 * var(--index) + var(--gutter) * 2);
+}
+.frame-bg{
+  background-color: rgb(0 0 0 / .87);
+}
+main.frame-media {
+  width: calc(var(--index) * var(--side-big) );
+  height: calc(var(--index) * var(--side-small));
+}
+video.frame-media_2{
+  width: calc(var(--index) * var(--side-big) );
+  height: calc(var(--index) * var(--side-small));
+}
+
+.text-right > *{
+  position: relative;
+  left: 18vw;
+}
+.frame h3{
+  font-size: calc(var(--index) * 2.3);
+}
+.frame p {
+  max-width: 30vw;
+  margin-top: 3vh;
+  font-size: calc(var(--index) * 1.5);
+  
+}
+.text-left > *{
+  position: relative;
+  right: 20vw;
+}
+.fixed{
+  width: 10%;
+  height: calc(100vh - 40%);
+  position: fixed;
+  left: 20px;
+  top: 20% ;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  z-index: 9999999;
+  transition: 0.4s ease-in;
+}
+.fix-btn, .fix-btn-vent,
+.fix-btn-kitchen, .fix-btn-decor,
+.fix-btn-a_frame, .fix-btn-mtk, .fix-btn-door{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.fix-btn span, .fix-btn-vent span,
+.fix-btn-kitchen span, .fix-btn-decor span,
+.fix-btn-a_frame span, .fix-btn-mtk span, .fix-btn-door span{
+color: rgb(224,90,190);
+opacity: 0;
+transition: 1s ease-in;
+}
+.icon-span{
+  margin-left: 0.8rem ;
+  font-size: 18px;
+}
+.active-icon {
+  width: 50px;
+  height: 50px; 
+  /* background-color: rgba(187, 0, 255, 0.3); */
+  /* border-radius:  0 50% 50% 0; */
+
+}
+.default-icon{
+width: 35px;
+height: 35px;
+}
+@media screen and (max-width:780px){
+  .fixed{
+    width: calc(100% - 150px);
+    height: 50px;
+    position: fixed;
+    left: calc(100% - 90%);
+    top: 90%;
+    display: flex;
+    flex-direction:row;
+    align-items: start;
+    justify-content: space-between;
+  }
+  .icon-span{
+    margin-left: 0.2rem ;
+    font-size: 15px;
+  }
+  .active-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .default-icon{
+  width: 25px;
+  height: 25px;
+  }
+  .frame h3{
+    font-size: 25px;
+  }
+  .frame p {
+    font-size: 18px;
+    
+  }
+  .btn-home{
+    bottom: 80px;
+    right: -30px;
+  }
+
+}
+@media screen and (max-width:450px){
+  .fixed{
+    width: calc(100% - 50px);
+    left: calc(100% - 94%);
+    top: 90%;
+  }
+  .icon-span{
+    margin-left: 0.2rem ;
+    font-size: 12px;
+  }
+  .active-icon {
+    width: 25px;
+    height: 25px;
+  }
+  .default-icon{
+  width: 20px;
+  height: 20px;
+  }
+  .frame h3{
+    font-size: 15px;
+  }
+  .frame p {
+    max-width: 30vw;
+    margin-top: 3vh;
+    font-size: 10px;
+    
+  }
+  .btn-home{
+    bottom: 80px;
+    right: -30px;
+  }
+}
